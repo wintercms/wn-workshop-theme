@@ -1,0 +1,24 @@
+description = "HTML Head"
+==
+{##}
+<!DOCTYPE html>
+<html class="h-full">
+    <head>
+        <meta charset="utf-8">
+        <title>Winter CMS - {{ this.page.title }}</title>
+
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="Winter CMS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="Winter CMS">
+
+        <link rel="icon" type="image/png" href="{{ 'assets/images/winter.png'|theme }}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;400;700&amp;family=Work+Sans:wght@800&amp;display=swap" rel="stylesheet">
+        <link href="{{ 'assets/css/theme.css'|theme }}" rel="stylesheet">
+        {% styles %}
+    </head>
+    <body class="flex flex-col h-full">

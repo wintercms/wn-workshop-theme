@@ -1,0 +1,24 @@
+{
+  "name": "wintercms-workshop-theme",
+  "version": "1.0.0",
+  "description": "Winter CMS Workshop Theme",
+  "main": "index.js",
+  "scripts": {
+    "compile-dev": "tailwindcss -i ./assets/css/base.css -o ./assets/css/theme.css",
+    "compile": "NODE_ENV=production tailwindcss -i ./assets/css/base.css -o ./assets/css/theme.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Winter CMS",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.3.2",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
+  },
+  "postcss": {
+    "plugins": {
+        "tailwindcss": {},
+        "autoprefixer": {}
+    }
+  }
+}

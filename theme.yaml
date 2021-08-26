@@ -1,0 +1,13 @@
+name: Workshop
+description: TailwindCSS-built theme for testing core plugins
+author: Winter CMS
+homepage: 'http://wintercms.com'
+code: workshop
+
+require:
+    - Winter.Blog
+    - Winter.User
+    - Winter.Pages
+    - Winter.Forum
+    - Winter.Translate
+    - Winter.Sitemap

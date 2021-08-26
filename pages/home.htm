@@ -1,0 +1,33 @@
+title = "Home"
+url = "/"
+layout = "default"
+==
+{##}
+
+<nav class="fixed top-0 left-0 w-full bg-blue-600">
+    Navigation
+</nav>
+
+<section id="hero" class="bg-gradient-to-b from-blue-500 to-blue-600 hero">
+    <h1 class="text-white mb-0">
+        Winter CMS Workshop
+    </h1>
+    <h2 class="text-blue-300 font-body font-light mb-0">
+        Testing Winter CMS plugins since 2021.
+    </h2>
+</section>
+
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <h2 class="mb-6">Hi, there!</h2>
+
+        <p>Welcome to the Winter CMS Workshop. This theme provides a suitable boilerplate for testing the most common
+        Winter CMS plugins with a simple but visually pleasing theme. It is built using the
+        <a href="https://tailwindcss.com" target="tailwind">Tailwind CSS</a> framework, also providing a suitable
+        example of how to implement Tailwind CSS in a theme.</p>
+
+        <p class="mt-4">In this instance, the theme is testing out a simple CMS page with a partial underneath the main content.</p>
+
+        {% partial 'instructions' %}
+    </div>
+</section>
