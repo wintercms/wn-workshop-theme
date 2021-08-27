@@ -61,6 +61,6 @@
 
     /* Hero */
     .hero {
-        @apply px-40 pt-52 pb-28 text-center;
+        @apply px-16 pt-52 pb-28 text-center lg:px-40;
     }
 }

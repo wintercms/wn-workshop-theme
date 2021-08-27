@@ -650,11 +650,18 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
 /* Hero */
 
 .hero {
-  padding-left: 10rem;
-  padding-right: 10rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   padding-top: 13rem;
   padding-bottom: 7rem;
   text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
 }
 
 .container {
