@@ -1,0 +1,13 @@
+description = "Plugin Section Navigation"
+==
+{##}
+<nav class="
+    fixed top-0 left-0 w-full p-4 divide-x divide-white divide-opacity-40 z-20
+    {% if color == false or color == "blue" %} bg-blue-600 {% endif %}
+">
+    {% partial 'nav/section' icon="home" text="Home" active=true %}
+    {% partial 'nav/section' icon="static-page" text="Pages" %}
+    {% partial 'nav/section' icon="blog" text="Blog" %}
+    {% partial 'nav/section' icon="forum" text="Forum" %}
+    {% partial 'nav/section' icon="user" text="User" %}
+</nav>

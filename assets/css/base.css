@@ -5,7 +5,13 @@
 @layer base {
     /* Default text color */
     html {
-        @apply text-gray-600;
+        @apply text-gray-500;
+    }
+
+    /* Disable OSX scrolling bounce effect */
+    html,
+    body {
+        overscroll-behavior: none;
     }
 
     /* Heading styles */
@@ -15,7 +21,7 @@
     h4,
     h5,
     h6 {
-        @apply text-gray-800 font-heading mb-6;
+        @apply text-gray-700 font-heading mb-6;
     }
 
     h1 {
