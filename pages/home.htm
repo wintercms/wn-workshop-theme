@@ -25,7 +25,7 @@ layout = "default"
                 <a href="https://tailwindcss.com" target="tailwind">Tailwind CSS</a> framework, also providing a suitable
                 example of how to implement Tailwind CSS in a theme.</p>
 
-                <p>In this instance, the theme is testing out a simple CMS page with a partial underneath the main content.</p>
+                <p>In this instance, the theme is testing out a simple CMS page with a partial underneath the main content, in addition to partials being used throughout the layout and page to display UI elements.</p>
 
                 <p>On the right, you can see a component to show the latest article in the Blog.</p>
 
@@ -37,7 +37,7 @@ layout = "default"
                     {% partial 'blog/latest-single' %}
 
                     <div class="mt-6 text-center">
-                        {% partial 'ui/link-button' url="#" text="All blog articles" %}
+                        {% partial 'ui/link-button' url="blog/index"|page text="All blog articles" %}
                     </div>
                 </div>
             </div>

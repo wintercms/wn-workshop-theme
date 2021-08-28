@@ -1,0 +1,20 @@
+description = "Default"
+==
+{##}
+
+{% partial 'html/head' %}
+
+{% partial 'nav/section-nav' color="purple" active="blog" %}
+
+<section id="hero" class="bg-gradient-to-b from-purple-500 to-purple-600 hero-small">
+    <h1 class="text-white mb-0">
+        Blog
+    </h1>
+    <h2 class="text-purple-300 font-body font-light mb-0">
+        Testing the Winter.Blog plugin.
+    </h2>
+</section>
+
+{% page %}
+
+{% partial 'html/foot' %}

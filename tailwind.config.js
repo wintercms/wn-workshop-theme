@@ -18,6 +18,7 @@ module.exports = {
             gray: colors.trueGray,
             white: colors.white,
             blue: colors.sky,
+            purple: colors.violet,
         },
         container: {
             center: true,

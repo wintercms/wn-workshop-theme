@@ -621,6 +621,21 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
   }
 }
 
+.hero-small {
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-small {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
 .container {
   width: 100%;
   margin-right: auto;
@@ -918,6 +933,11 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
   background-color: rgba(2, 132, 199, var(--tw-bg-opacity));
 }
 
+.bg-purple-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(124, 58, 237, var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -927,8 +947,17 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(14, 165, 233, 0));
 }
 
+.from-purple-500 {
+  --tw-gradient-from: #8b5cf6;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(139, 92, 246, 0));
+}
+
 .to-blue-600 {
   --tw-gradient-to: #0284c7;
+}
+
+.to-purple-600 {
+  --tw-gradient-to: #7c3aed;
 }
 
 .bg-cover {
@@ -1054,6 +1083,11 @@ p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgba(3, 105, 161, var(--tw-text-opacity));
+}
+
+.text-purple-300 {
+  --tw-text-opacity: 1;
+  color: rgba(196, 181, 253, var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:text-blue-900 {
