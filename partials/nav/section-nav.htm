@@ -1,23 +1,43 @@
 description = "Plugin Section Navigation"
 ==
-{##}
-{% if active == false or active == "home" %}
-    {% set homeActive = true %}
-{% endif %}
-{% if active == "blog" %}
-    {% set blogActive = true %}
-{% endif %}
+<?php
+use System\Classes\PluginManager;
 
+function onStart()
+{
+    $manager = PluginManager::instance();
+
+    // Find installed plugins
+    $this['pagesInstalled'] = $manager->hasPlugin('Winter.Pages');
+    $this['blogInstalled'] = $manager->hasPlugin('Winter.Blog');
+    $this['forumInstalled'] = $manager->hasPlugin('Winter.Forum');
+    $this['userInstalled'] = $manager->hasPlugin('Winter.User');
+
+    // Active section
+    if (empty($this['active'])) {
+        $this['active'] = 'home';
+    }
+}
+==
+{##}
 <nav class="
     fixed top-0 left-0 w-full z-20
     {% if color == false or color == "blue" %} bg-blue-600 {% endif %}
     {% if color == "purple" %} bg-purple-600 {% endif %}
 ">
     <div class="p-4 divide-x divide-white divide-opacity-40 overflow-x-scroll whitespace-nowrap">
-        {% partial 'nav/section' icon="home" text="Home" url="home"|page active=homeActive %}
-        {% partial 'nav/section' icon="static-page" text="Pages" active=pagesActive %}
-        {% partial 'nav/section' icon="blog" text="Blog" url="blog/index"|page active=blogActive %}
-        {% partial 'nav/section' icon="forum" text="Forum" active=forumActive %}
-        {% partial 'nav/section' icon="user" text="User" active=userActive %}
+        {% partial 'nav/section' icon="home" text="Home" url="home"|page active=(active == 'home') %}
+        {% if pagesInstalled %}
+            {% partial 'nav/section' icon="static-page" text="Pages" active=(active == 'pages') %}
+        {% endif %}
+        {% if blogInstalled %}
+            {% partial 'nav/section' icon="blog" text="Blog" url="blog/index"|page active=(active == 'blog') %}
+        {% endif %}
+        {% if forumInstalled %}
+            {% partial 'nav/section' icon="forum" text="Forum" active=(active == 'forum') %}
+        {% endif %}
+        {% if userInstalled %}
+            {% partial 'nav/section' icon="user" text="User" active=(active == 'user') %}
+        {% endif %}
     </div>
 </nav>
