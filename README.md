@@ -35,3 +35,5 @@ You can then run one of two commands depending on your environment:
 - `npm run compile` will compile the production stylesheet.
 
 Only the production stylesheet should be committed to Git.
+
+You may also watch for changes to the theme files, auto-compiling on any detected changes by running `npm run watch`.

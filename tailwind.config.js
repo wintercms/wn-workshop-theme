@@ -1,6 +1,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+    mode: 'jit',
     purge: {
         content: [
             './pages/**/*.htm',
@@ -24,8 +25,8 @@ module.exports = {
             center: true,
         },
         fontFamily: {
-            heading: ['Work Sans', 'sans-serif'],
-            body: ['Heebo', 'sans-serif'],
+            heading: ["'Work Sans'", 'sans-serif'],
+            body: ["'Heebo'", 'sans-serif'],
         },
         fontWeight: {
             light: 200,
