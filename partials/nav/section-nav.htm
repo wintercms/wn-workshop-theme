@@ -25,7 +25,7 @@ function onStart()
     {% if color == false or color == "blue" %} bg-blue-600 {% endif %}
     {% if color == "purple" %} bg-purple-600 {% endif %}
 ">
-    <div class="p-4 divide-x divide-white divide-opacity-40 overflow-x-scroll whitespace-nowrap">
+    <div class="p-4 divide-x divide-white divide-opacity-40 overflow-x-auto whitespace-nowrap">
         {% partial 'nav/section' icon="home" text="Home" url="home"|page active=(active == 'home') %}
         {% if pagesInstalled %}
             {% partial 'nav/section' icon="static-page" text="Pages" active=(active == 'pages') %}
