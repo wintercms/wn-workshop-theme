@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-    /* Default text color */
-    html {
-        @apply text-gray-500;
+    /* Default font */
+    body {
+        @apply text-gray-500 font-body;
     }
 
     /* Disable OSX scrolling bounce effect */
@@ -41,7 +41,6 @@
     }
 
     /* Paragraphs and spacing */
-
     p {
         @apply mb-4;
     }
