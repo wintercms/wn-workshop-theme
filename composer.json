@@ -1,5 +1,5 @@
 {
-    "name": "wintercms/wn-workshop-theme",
+    "name": "winter/wn-workshop-theme",
     "description": "TailwindCSS-built theme for testing core plugins",
     "type": "winter-theme",
     "homepage": "https://github.com/wintercms/wn-workshop-theme",
