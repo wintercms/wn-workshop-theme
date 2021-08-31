@@ -1,0 +1,24 @@
+{
+    "name": "wintercms/wn-workshop-theme",
+    "description": "TailwindCSS-built theme for testing core plugins",
+    "type": "winter-theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Thomson",
+            "email": "git@alfreido.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Winter CMS Maintainers",
+            "homepage": "https://wintercms.com",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-name": "workshop"
+    }
+}
