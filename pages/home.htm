@@ -21,7 +21,7 @@ function onStart()
         Winter CMS Workshop
     </h1>
     <h2 class="text-blue-300 font-body font-light mb-0">
-        Testing Winter CMS plugins since 2021.
+        Testing Winter CMS core and plugins since 2021.
     </h2>
 </section>
 
@@ -32,13 +32,15 @@ function onStart()
                 <h2 class="mb-6">Hi, there!</h2>
 
                 <p>Welcome to the Winter CMS Workshop. This theme provides a suitable boilerplate for testing the most common
-                Winter CMS plugins with a simple but visually pleasing theme. It is built using the
+                Winter CMS core functionality and plugins with a simple but visually pleasing theme. It is built using the
                 <a href="https://tailwindcss.com" target="tailwind">Tailwind CSS</a> framework, also providing a suitable
                 example of how to implement Tailwind CSS in a theme.</p>
 
                 <p>In this instance, the theme is testing out a simple CMS page with a partial underneath the main content, in addition to partials being used throughout the layout and page to display UI elements.</p>
 
+                {% if blogInstalled %}
                 <p>On the right, you can see a component to show the latest article in the Blog.</p>
+                {% endif %}
 
                 {% partial 'instructions' %}
             </div>

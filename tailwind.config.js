@@ -1,7 +1,6 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-    mode: 'jit',
     purge: {
         content: [
             './pages/**/*.htm',
@@ -19,6 +18,7 @@ module.exports = {
             gray: colors.trueGray,
             white: colors.white,
             blue: colors.sky,
+            amber: colors.amber,
             purple: colors.violet,
         },
         container: {
