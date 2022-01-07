@@ -14,12 +14,14 @@
   "devDependencies": {
     "autoprefixer": "^10.3.2",
     "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.7"
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.7",
+    "laravel-mix": "^6.0.34"
   },
   "postcss": {
     "plugins": {
-        "tailwindcss": {},
-        "autoprefixer": {}
+      "tailwindcss": {},
+      "autoprefixer": {}
     }
   }
 }
