@@ -1,8 +1,25 @@
 description = Button
 ==
 {##}
-<a href="{{ url }}" class="
-    inline-flex
-">
+<a
+    href="{{ url|default("#") }}"
+    class="
+        inline-flex button font-bold text-sm rounded-lg transition transform active:scale-90
+
+        {% if size == false or size == "normal" %} py-4 px-8 {% endif %}
+        {% if size == "large" %} py-6 px-10 {% endif %}
+        {% if size == "small" %} py-2 px-4 {% endif %}
+
+        {% if color == false or color == "blue" %} bg-blue-500 text-white {% endif %}
+        {% if color == "amber" %} bg-amber-600 text-white hover:bg-amber-500 {% endif %}
+        {% if color == "green" %} bg-green-600 text-white hover:bg-green-500 {% endif %}
+        {% if color == "red" %} bg-red-600 text-white hover:bg-red-500 {% endif %}
+        {% if color == "purple" %} bg-purple-500 text-white {% endif %}
+    "
+    {% if external %} target="_blank"{% endif %}
+    {% if dataRequest %} data-request="{{ dataRequest }}"{% endif %}
+    {% if dataRequestData %} data-request-data="{{ dataRequestData }}"{% endif %}
+    {% if dataFlash %} data-request-flash{% endif %}
+>
     <span>{{ text }}</span>
 </a>

@@ -1,0 +1,180 @@
+title = "HTML Data Attribute Requests | Framework"
+url = "/framework/attr-requests"
+layout = "framework"
+==
+<?php
+function onSimple()
+{
+    return [
+        '#simple-request-response' => '<span class="text-green-600">AJAX Request was successful!</span>',
+    ];
+}
+
+function onFormSubmission()
+{
+    if (empty(post('name'))) {
+        return [
+            '#form-submission-response' => '<div class="mt-4 p-4 bg-red-50 border border-red-200">
+                You did not provide your name.
+            </div>',
+        ];
+    } elseif (empty(post('email'))) {
+        return [
+            '#form-submission-response' => '<div class="mt-4 p-4 bg-red-50 border border-red-200">
+                You did not provide your email address.
+            </div>',
+        ];
+    } else {
+        return [
+            '#form-submission-response' => '<div class="mt-4 p-4 bg-green-50 border border-green-200">
+                Your name is <strong>' . post('name') . '</strong> and you can be contacted via email
+                at <strong>' . post('email') . '</strong>.
+            </div>',
+        ];
+    }
+}
+
+function onError()
+{
+    throw new ApplicationException('This AJAX response threw an exception.');
+}
+
+function onFlash()
+{
+    $type = post('type', 'success');
+    Flash::$type('This is a flash message');
+}
+
+function onPrepend()
+{
+    return [
+        '^#prepend-content' => '<div>' . date('Y-m-d H:i:s') . '</div>',
+    ];
+}
+
+function onAppend()
+{
+    return [
+        '@#append-content' => '<div>' . date('Y-m-d H:i:s') . '</div>',
+    ];
+}
+==
+{##}
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% partial 'framework/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                <h2>HTML Data Attribute Requests</h2>
+
+                <!-- BEGIN Simple request -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Simple request</h4>
+                <p>This is a test to do a simple AJAX request on the click of a button and show a success message next to the button on completion.</p>
+
+                <div class="flex flex-row gap-4 items-center" id="simple-request">
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Test now" dataRequest="onSimple" %}
+                    </div>
+                    <div id="simple-request-response">
+                    </div>
+                </div>
+                <!-- END Simple request -->
+
+                <!-- BEGIN Form submission -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Form submission</h4>
+                <p>This is a test to make a form submission via AJAX and display the form contents on completion. The AJAX request
+                is initiated from the Submit button.</p>
+
+                <form class="grid grid-cols-2 gap-4" id="form-submission" data-request="onFormSubmission">
+                    <div>
+                        <label class="font-bold block mb-2" for="name">Name</label>
+                        <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="name" placeholder="Enter your name">
+                    </div>
+                    <div>
+                        <label class="font-bold block mb-2" for="email">Email</label>
+                        <input class="block w-full border border-amber-600 p-4 rounded" type="email" name="email" placeholder="Enter your email address">
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Submit" %}
+                    </div>
+                </form>
+
+                <div id="form-submission-response">
+                </div>
+
+                <script>
+                document.querySelector('#form-submission .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.target.closest('form').requestSubmit();
+                });
+                </script>
+                <!-- END Form submission -->
+
+                <!-- BEGIN Error response -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Error response</h4>
+                <p>This is a test to do an AJAX request that throws an exception. It should show a Flash error message.</p>
+
+                <div class="flex flex-row gap-4 items-center" id="error-request">
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Test now" dataRequest="onError" %}
+                    </div>
+                </div>
+                <!-- END Error response -->
+
+                <!-- BEGIN Flash response -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Flash response</h4>
+                <p>This is a test to do an AJAX request that sends a Flash response back of differing types.</p>
+
+                <div class="flex flex-row gap-4 items-center" id="flash-response">
+                    <div>
+                        {% partial 'ui/button' color="green" text="Test success" dataRequest="onFlash" dataRequestData="type: 'success'" dataFlash=true %}
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Test warning" dataRequest="onFlash" dataRequestData="type: 'warning'" dataFlash=true %}
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="red" text="Test error" dataRequest="onFlash" dataRequestData="type: 'error'" dataFlash=true %}
+                    </div>
+                </div>
+                <!-- END Flash response -->
+
+                <!-- BEGIN Append / Prepend -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Appended and prepended content</h4>
+                <p>This is a test to do an AJAX request that appends or prepends content as opposed to replacing the
+                content of the targeted element.</p>
+
+                <div class="flex flex-row gap-4" id="append-prepend">
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Test prepend" dataRequest="onPrepend" %}
+
+                        <div id="prepend-content">
+                            <div class="font-bold">Prepended content</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Test append" dataRequest="onAppend" %}
+
+                        <div id="append-content">
+                            <div class="font-bold">Appended content</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Append / Prepend -->
+            </div>
+        </div>
+    </div>
+</section>

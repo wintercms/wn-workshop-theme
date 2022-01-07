@@ -2,6 +2,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
     purge: {
+        enabled: true,
         content: [
             './pages/**/*.htm',
             './partials/**/*.htm',
@@ -20,6 +21,8 @@ module.exports = {
             blue: colors.sky,
             amber: colors.amber,
             purple: colors.violet,
+            green: colors.green,
+            red: colors.red,
         },
         container: {
             center: true,
@@ -38,6 +41,7 @@ module.exports = {
     },
     variants: {
         extend: {
+            scale: ['active'],
             translate: ['group-hover'],
         },
     },
