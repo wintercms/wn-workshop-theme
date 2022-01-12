@@ -13,27 +13,35 @@ The theme tests the following plugins:
 
 And tests the following concepts:
 
+- The [Snowboard](https://wintercms.com/docs/snowboard/introduction) JavaScript framework
 - Inline component code
 - Theme-based component template overrides
 
 ## Requirements
 
-- The above plugins installed in Winter CMS
-- `npm` 12 or above
+- Winter CMS 1.2.0 or above.
+- NodeJS 12 or above, if you wish to style the theme.
 
 ## Development
 
-Tailwind CSS requires the use of `npm` to compile both the development and final production stylesheets. The production
-stylesheets use Tailwind's purging feature (through PurgeCSS) to include only the styles that are needed for displaying
-the site, dramatically decreasing the resulting filesize of the stylesheet.
+The theme is built on Tailwind CSS, which is built using the NodeJS framework. To be able to compile any changes made
+to the styling or content, you must use the Mix commands that are included with Winter CMS 1.2.
 
-Run `npm install` on first installation to bring in all Node dependencies.
+To compile the Tailwind CSS styles for development, run the following command in the root folder of the project:
 
-You can then run one of two commands depending on your environment:
+```bash
+php artisan mix:compile -p workshop-theme
+```
 
-- `npm run compile-dev` will compile the full Tailwind CSS framework for development.
-- `npm run compile` will compile the production stylesheet.
+To compile the Tailwind CSS styles for production (which should be done if you commit any changes to the Workshop theme),
+you must add the `--production` flag to the above command:
 
-Only the production stylesheet should be committed to Git.
+```bash
+php artisan mix:compile -p workshop-theme --production
+```
 
-You may also watch for changes to the theme files, auto-compiling on any detected changes by running `npm run watch`.
+To make it easy to develop the theme, you can also watch the necessary template and stylesheet files for any changes:
+
+```bash
+php artisan mix:watch workshop-theme
+```
