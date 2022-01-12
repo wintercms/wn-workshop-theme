@@ -28,7 +28,7 @@ function onStart()
 ">
     <div class="p-4 divide-x divide-white divide-opacity-40 overflow-x-auto whitespace-nowrap">
         {% partial 'nav/section' icon="home" text="Home" url="home"|page active=(active == 'home') %}
-        {% partial 'nav/section' icon="framework" text="JS Framework" url="framework/index"|page active=(active == 'framework') %}
+        {% partial 'nav/section' icon="framework" text="Snowboard" url="snowboard/index"|page active=(active == 'snowboard') %}
         {% if pagesInstalled %}
             {% partial 'nav/section' icon="static-page" text="Pages" active=(active == 'pages') %}
         {% endif %}

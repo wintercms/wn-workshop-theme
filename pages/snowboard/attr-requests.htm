@@ -1,6 +1,6 @@
-title = "JavaScript Requests | Framework"
-url = "/framework/js-requests"
-layout = "framework"
+title = "HTML Data Attribute Requests | Snowboard"
+url = "/snowboard/attr-requests"
+layout = "snowboard"
 ==
 <?php
 function onSimple()
@@ -64,11 +64,11 @@ function onAppend()
     <div class="container max-w-screen-xl">
         <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
             <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
-                {% partial 'framework/sections-list' %}
+                {% partial 'snowboard/sections-list' %}
             </div>
 
             <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
-                <h2>JavaScript Requests</h2>
+                <h2>HTML Data Attribute Requests</h2>
 
                 <!-- BEGIN Simple request -->
                 <hr class="mb-8">
@@ -78,18 +78,11 @@ function onAppend()
 
                 <div class="flex flex-row gap-4 items-center" id="simple-request">
                     <div>
-                        {% partial 'ui/button' color="amber" text="Test now" %}
+                        {% partial 'ui/button' color="amber" text="Test now" dataRequest="onSimple" %}
                     </div>
                     <div id="simple-request-response">
                     </div>
                 </div>
-
-                <script>
-                document.querySelector('#simple-request .button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    Snowboard.request('#simple-request .button', 'onSimple');
-                });
-                </script>
                 <!-- END Simple request -->
 
                 <!-- BEGIN Form submission -->
@@ -99,7 +92,7 @@ function onAppend()
                 <p>This is a test to make a form submission via AJAX and display the form contents on completion. The AJAX request
                 is initiated from the Submit button.</p>
 
-                <form class="grid grid-cols-2 gap-4" id="form-submission">
+                <form class="grid grid-cols-2 gap-4" id="form-submission" data-request="onFormSubmission">
                     <div>
                         <label class="font-bold block mb-2" for="name">Name</label>
                         <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="name" placeholder="Enter your name">
@@ -119,7 +112,7 @@ function onAppend()
                 <script>
                 document.querySelector('#form-submission .button').addEventListener('click', function (event) {
                     event.preventDefault();
-                    Snowboard.request('#form-submission .button', 'onFormSubmission');
+                    event.target.closest('form').requestSubmit();
                 });
                 </script>
                 <!-- END Form submission -->
@@ -132,16 +125,9 @@ function onAppend()
 
                 <div class="flex flex-row gap-4 items-center" id="error-request">
                     <div>
-                        {% partial 'ui/button' color="amber" text="Test now" %}
+                        {% partial 'ui/button' color="amber" text="Test now" dataRequest="onError" %}
                     </div>
                 </div>
-
-                <script>
-                document.querySelector('#error-request .button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    Snowboard.request('#error-request .button', 'onError');
-                });
-                </script>
                 <!-- END Error response -->
 
                 <!-- BEGIN Flash response -->
@@ -152,30 +138,15 @@ function onAppend()
 
                 <div class="flex flex-row gap-4 items-center" id="flash-response">
                     <div>
-                        {% partial 'ui/button' color="green" text="Test success" %}
+                        {% partial 'ui/button' color="green" text="Test success" dataRequest="onFlash" dataRequestData="type: 'success'" dataFlash=true %}
                     </div>
                     <div>
-                        {% partial 'ui/button' color="amber" text="Test warning" %}
+                        {% partial 'ui/button' color="amber" text="Test warning" dataRequest="onFlash" dataRequestData="type: 'warning'" dataFlash=true %}
                     </div>
                     <div>
-                        {% partial 'ui/button' color="red" text="Test error" %}
+                        {% partial 'ui/button' color="red" text="Test error" dataRequest="onFlash" dataRequestData="type: 'error'" dataFlash=true %}
                     </div>
                 </div>
-
-                <script>
-                document.querySelector('#flash-response div:nth-child(1) .button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    Snowboard.request('#flash-response div:nth-child(1) .button', 'onFlash', { data: { type: 'success' }, flash: true });
-                });
-                document.querySelector('#flash-response div:nth-child(2) .button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    Snowboard.request('#flash-response div:nth-child(2) .button', 'onFlash', { data: { type: 'warning' }, flash: true });
-                });
-                document.querySelector('#flash-response div:nth-child(3) .button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    Snowboard.request('#flash-response div:nth-child(3) .button', 'onFlash', { data: { type: 'error' }, flash: true });
-                });
-                </script>
                 <!-- END Flash response -->
 
                 <!-- BEGIN Append / Prepend -->
@@ -187,7 +158,7 @@ function onAppend()
 
                 <div class="flex flex-row gap-4" id="append-prepend">
                     <div>
-                        {% partial 'ui/button' color="amber" text="Test prepend" %}
+                        {% partial 'ui/button' color="amber" text="Test prepend" dataRequest="onPrepend" %}
 
                         <div id="prepend-content">
                             <div class="font-bold">Prepended content</div>
@@ -195,24 +166,13 @@ function onAppend()
                     </div>
 
                     <div>
-                        {% partial 'ui/button' color="amber" text="Test append" %}
+                        {% partial 'ui/button' color="amber" text="Test append" dataRequest="onAppend" %}
 
                         <div id="append-content">
                             <div class="font-bold">Appended content</div>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                document.querySelector('#append-prepend div:nth-child(1) .button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    Snowboard.request('#append-prepend div:nth-child(1) .button', 'onPrepend');
-                });
-                document.querySelector('#append-prepend div:nth-child(2) .button').addEventListener('click', function (event) {
-                    event.preventDefault();
-                    Snowboard.request('#append-prepend div:nth-child(2) .button', 'onAppend');
-                });
-                </script>
                 <!-- END Append / Prepend -->
             </div>
         </div>
