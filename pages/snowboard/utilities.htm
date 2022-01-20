@@ -1,0 +1,109 @@
+title = "Utilities | Snowboard"
+url = "/snowboard/utilities"
+layout = "snowboard"
+==
+{##}
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% partial 'snowboard/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                <h2>Utilities</h2>
+
+                <h3>Cookie</h3>
+
+                <!-- BEGIN Cookie set and get -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Set, get and remove a cookie</h4>
+                <p>Sets a cookie called "testCookie" to the current date and time as an ISO string.</p>
+
+                <div class="flex flex-row gap-4 items-center" id="cookie-get-set">
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Set cookie" %}
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Get cookie" %}
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Remove cookie" %}
+                    </div>
+                </div>
+
+                <script>
+                document.querySelector('#cookie-get-set div:nth-child(1) .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    Snowboard.cookie().set('testCookie', new Date().toISOString());
+                });
+                document.querySelector('#cookie-get-set div:nth-child(2) .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    const cookieValue = Snowboard.cookie().get('testCookie');
+
+                    if (cookieValue === undefined) {
+                        Snowboard.flash('Cookie is not set', 'warning');
+                    } else {
+                        Snowboard.flash('Cookie set to "' + cookieValue + '"', 'success');
+                    }
+                });
+                document.querySelector('#cookie-get-set div:nth-child(3) .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    Snowboard.cookie().remove('testCookie');
+                    Snowboard.flash('Cookie removed', 'success');
+                });
+                </script>
+                <!-- END Cookie set and get -->
+
+                <!-- BEGIN Cookie long set and get -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Set and get a long-lasting cookie</h4>
+                <p>Sets a cookie called "testLongCookie" to the current date and time as an ISO string. Using the options,
+                it will also set the cookie to expire in 7 days.</p>
+
+                <div class="flex flex-row gap-4 items-center" id="cookie-long-get-set">
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Set cookie" %}
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Get cookie" %}
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Remove cookie" %}
+                    </div>
+                </div>
+
+                <script>
+                document.querySelector('#cookie-long-get-set div:nth-child(1) .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    Snowboard.cookie().set('testLongCookie', new Date().toISOString(), { expires: 7 });
+                });
+                document.querySelector('#cookie-long-get-set div:nth-child(2) .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    const cookieValue = Snowboard.cookie().get('testLongCookie');
+
+                    if (cookieValue === undefined) {
+                        Snowboard.flash('Cookie is not set', 'warning');
+                    } else {
+                        Snowboard.flash('Cookie set to "' + cookieValue + '"', 'success');
+                    }
+                });
+                document.querySelector('#cookie-long-get-set div:nth-child(3) .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    Snowboard.cookie().remove('testLongCookie');
+                    Snowboard.flash('Cookie removed', 'success');
+                });
+                </script>
+                <!-- END Cookie set and get -->
+            </div>
+        </div>
+    </div>
+</section>
