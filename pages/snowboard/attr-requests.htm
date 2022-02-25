@@ -58,6 +58,15 @@ function onAppend()
         '@#append-content' => '<div>' . date('Y-m-d H:i:s') . '</div>',
     ];
 }
+
+function onValidateForm()
+{
+    if (post('name') !== 'success') {
+        throw new ValidationException([
+            'name' => 'You must enter the correct name'
+        ]);
+    }
+}
 ==
 {##}
 <section id="body" class="py-20 flex-grow">
@@ -174,6 +183,33 @@ function onAppend()
                     </div>
                 </div>
                 <!-- END Append / Prepend -->
+
+                <!-- BEGIN Form validation -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Form validation</h4>
+                <p>This is a test to do an AJAX request that triggers a form validation error if the "Name" field
+                does not contain the word "success".</p>
+
+                <form class="grid grid-cols-2 gap-4" id="form-validation" data-request="onValidateForm" data-request-validate>
+                    <div>
+                        <label class="font-bold block mb-2" for="name">Name</label>
+                        <input class="block w-full border border-amber-600 p-4 rounded self-end" type="text" name="name" placeholder="Enter your name">
+                    </div>
+                    <div>
+                        {% partial 'ui/button' color="amber" text="Submit" %}
+                    </div>
+                    <div data-validate-error class="mt-4 p-4 bg-red-50 border border-red-200">
+                    </div>
+                </form>
+
+                <script>
+                document.querySelector('#form-validation .button').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.target.closest('form').requestSubmit();
+                });
+                </script>
+                <!-- END Form validation -->
             </div>
         </div>
     </div>

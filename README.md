@@ -19,13 +19,13 @@ And tests the following concepts:
 
 ## Requirements
 
-- Winter CMS 1.2.0 or above.
+- Winter CMS 1.1.8 or above.
 - NodeJS 12 or above, if you wish to style the theme.
 
 ## Development
 
 The theme is built on Tailwind CSS, which is built using the NodeJS framework. To be able to compile any changes made
-to the styling or content, you must use the Mix commands that are included with Winter CMS 1.2.
+to the styling or content, you must use the Mix commands that are included with Winter CMS 1.1.8.
 
 To compile the Tailwind CSS styles for development, run the following command in the root folder of the project:
 
