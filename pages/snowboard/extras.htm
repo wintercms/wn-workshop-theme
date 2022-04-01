@@ -1,0 +1,93 @@
+title = "Utilities | Snowboard"
+url = "/snowboard/extras"
+layout = "snowboard"
+==
+{##}
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% partial 'snowboard/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                <h2>Extra Features</h2>
+
+                <h3>Flash</h3>
+
+                <!-- BEGIN Flash -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Flash message</h4>
+                <p>Creates a flash message that is displayed to the user, optionally with an override that prepends the message and overrides the duration.</p>
+
+                <form class="grid grid-cols-3 gap-4" id="flash-message">
+                    <div>
+                        <label class="font-bold block mb-2" for="name">Message</label>
+                        <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="message" placeholder="Enter flash message" value="This is a flash message">
+                    </div>
+                    <div>
+                        <label class="font-bold block mb-2" for="email">Type</label>
+                        <select name="type" class="block w-full border border-amber-600 p-4 rounded">
+                            <option name="success" selected>success</option>
+                            <option name="warning">warning</option>
+                            <option name="error">error</option>
+                            <option name="info">info</option>
+                            <option name="default">default</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-bold block mb-2" for="email">Duration (secs)</label>
+                        <input class="block w-full border border-amber-600 p-4 rounded" type="number" name="time" value="7" step="1" min="0">
+                    </div>
+                    <div class="col-span-3">
+                        {% partial 'ui/button' id="flash-message-submit" color="amber" text="Submit" %}
+                        {% partial 'ui/button' id="flash-message-override" color="amber" text="Add override" %}
+                        {% partial 'ui/button' id="flash-message-no-override" color="amber" text="Remove override" %}
+                    </div>
+                </form>
+
+                <script>
+                let overrideClass = null;
+
+                document.querySelector('#flash-message-submit').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    Snowboard.flash(
+                        document.querySelector('#flash-message input[name="message"]').value,
+                        document.querySelector('#flash-message select[name="type"]').value,
+                        document.querySelector('#flash-message input[name="time"]').value
+                    );
+                });
+
+                document.querySelector('#flash-message-override').addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    if (overrideClass === null) {
+                        overrideClass = class FlashOverride extends Snowboard.Singleton {
+                            listens() {
+                                return {
+                                    'flash.create': 'onFlashCreate',
+                                };
+                            }
+
+                            onFlashCreate(flash) {
+                                flash.message = 'ALERT! ' + flash.message;
+                                flash.duration = 5;
+                            }
+                        };
+                    }
+
+                    Snowboard.addPlugin('flashOverride', overrideClass);
+                });
+
+                document.querySelector('#flash-message-no-override').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    Snowboard.removePlugin('flashOverride');
+                });
+                </script>
+                <!-- END Flash -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -16,6 +16,7 @@ description = Button
         {% if color == "red" %} bg-red-600 text-white hover:bg-red-500 {% endif %}
         {% if color == "purple" %} bg-purple-500 text-white {% endif %}
     "
+    {% if id %} id="{{ id }}"{% endif %}
     {% if external %} target="_blank"{% endif %}
     {% if dataRequest %} data-request="{{ dataRequest }}"{% endif %}
     {% if dataRequestData %} data-request-data="{{ dataRequestData }}"{% endif %}
