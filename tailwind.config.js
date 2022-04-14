@@ -1,22 +1,18 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-    purge: {
-        enabled: true,
-        content: [
-            './pages/**/*.htm',
-            './partials/**/*.htm',
-            './layouts/**/*.htm'
-        ],
-    },
-    darkMode: false, // or 'media' or 'class'
+    content: [
+        './pages/**/*.htm',
+        './partials/**/*.htm',
+        './layouts/**/*.htm'
+    ],
     theme: {
         colors: {
             // Build your palette here
             transparent: 'transparent',
             current: 'currentColor',
             black: colors.black,
-            gray: colors.trueGray,
+            gray: colors.neutral,
             white: colors.white,
             blue: colors.sky,
             amber: colors.amber,
@@ -38,12 +34,6 @@ module.exports = {
             heading: 800,
         },
         extend: {},
-    },
-    variants: {
-        extend: {
-            scale: ['active'],
-            translate: ['group-hover'],
-        },
     },
     plugins: [],
 };
