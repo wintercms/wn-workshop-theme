@@ -6,7 +6,11 @@ description = "Blog layout"
 
 <section id="hero" class="bg-gradient-to-b from-purple-500 to-purple-600 hero-small">
     <h1 class="text-white mb-0">
-        Blog
+        {% if this.page.heading %}
+            {{ this.page.heading }}
+        {% else %}
+            Blog
+        {% endif %}
     </h1>
     <h2 class="text-purple-300 font-body font-light mb-0">
         Testing the Winter.Blog plugin.

@@ -15,11 +15,15 @@ postsPerPage = 9
             </div>
 
             <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
-                <div class="grid grid-cols-3">
-                    {% for post in blogPosts.posts %}
-                        {% partial 'blog/post-listing' post=post %}
-                    {% endfor %}
-                </div>
+                {% if blogPosts.posts|length > 0 %}
+                    <div class="grid grid-cols-3">
+                        {% for post in blogPosts.posts %}
+                            {% partial 'blog/post-listing' post=post %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {% partial 'ui/empty' title="No posts published." subtitle="Please check back later." %}
+                {% endif %}
             </div>
         </div>
     </div>

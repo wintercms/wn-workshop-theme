@@ -1,0 +1,44 @@
+title = "Blog Post"
+url = "/blog/post/:slug"
+layout = "blog"
+
+[blogPost]
+slug = {{ :slug }}
+categoryPage = "blog/category"
+==
+<?php
+function onEnd()
+{
+    $this->title = $this->blogPost->post->title;
+    $this->page['heading'] = $this->blogPost->post->title;
+}
+==
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-3/4">
+                {{ post.content | md }}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-1/4 lg:mt-0">
+                <div class="mt-4">
+                    <span class="block text-gray-300">Published on</span>
+                    <span class="text-gray-400">{{ post.published_at | date("M d Y \\a\\t g:i a")}}</span>
+                </div>
+
+                <div class="mt-4">
+                    <span class="block text-gray-300">Categories</span>
+                    {% if post.categories|length == 0 %}
+                        <span class="text-gray-400">None</span>
+                    {% else %}
+                        <ul class="text-gray-400">
+                            {% for category in post.categories %}
+                                <li>{{ category.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

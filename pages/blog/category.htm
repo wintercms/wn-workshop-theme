@@ -6,7 +6,15 @@ layout = "blog"
 pageNumber = {{ :page }}
 categoryFilter = {{ :slug }}
 categoryPage = "blog/category"
+postPage = "blog/post"
 postsPerPage = 9
+==
+<?php
+function onEnd()
+{
+    $this->title = $this->blogPosts->category->name;
+    $this->page['heading'] = $this->blogPosts->category->name;
+}
 ==
 <section id="body" class="py-20 flex-grow">
     <div class="container max-w-screen-xl">
