@@ -1,6 +1,5 @@
 description = Plugin Section Navigation Item
 ==
-{##}
 {% set iconPath = 'assets/images/sections/' ~ icon ~ '.svg' %}
 <a href="{{ url }}" class="inline-flex flex-row py-1 px-4 {% if active == false %} opacity-60 {% endif %} hover:opacity-100 transform-gpu transition-opacity text-white items-center">
     <img src="{{ iconPath|theme }}" alt="{{ text }}" class="w-6 h-6 mr-2 fill-current">
