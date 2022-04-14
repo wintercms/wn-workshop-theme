@@ -4,9 +4,6 @@ author: Winter CMS
 homepage: 'http://wintercms.com'
 code: workshop
 
-mix:
-    workshop-theme: winter-mix.js
-
 require:
     - Winter.Blog
     - Winter.User
