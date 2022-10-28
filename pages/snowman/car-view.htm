@@ -1,0 +1,21 @@
+title = "Cars"
+url = "/snowman/cars/view/:slug"
+layout = "snowman"
+==
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% partial 'snowman/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                <h2>
+                    {dropdown name="year" label="Year" tab="Info" span="left" options="2016|2017|2018|2019|2020|2021|2022|2023" required="true"}{/dropdown}
+                    {text name="make" label="Make" tab="Info" span="left" required="true"}{/text}
+                    {text name="model" label="Model" tab="Info" span="right" required="true"}{/text}
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>

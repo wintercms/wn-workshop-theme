@@ -12,6 +12,7 @@ function onStart()
     $this['blogInstalled'] = $manager->hasPlugin('Winter.Blog');
     $this['forumInstalled'] = $manager->hasPlugin('Winter.Forum');
     $this['userInstalled'] = $manager->hasPlugin('Winter.User');
+    $this['snowmanInstalled'] = $manager->hasPlugin('Winter.Snowman');
 
     // Active section
     if (empty($this['active'])) {
@@ -24,9 +25,11 @@ function onStart()
     {% if color == false or color == "blue" %} bg-blue-600 {% endif %}
     {% if color == "amber" %} bg-amber-700 {% endif %}
     {% if color == "purple" %} bg-purple-600 {% endif %}
+    {% if color == "emerald" %} bg-emerald-700 {% endif %}
 ">
     <div class="p-4 divide-x divide-white divide-opacity-40 overflow-x-auto whitespace-nowrap">
         {% partial 'nav/section' icon="home" text="Home" url="home"|page active=(active == 'home') %}
+        {% partial 'nav/section' icon="home" text="CMS" url="cms/index"|page active=(active == 'cms') %}
         {% partial 'nav/section' icon="framework" text="Snowboard" url="snowboard/index"|page active=(active == 'snowboard') %}
         {% if pagesInstalled %}
             {% partial 'nav/section' icon="static-page" text="Pages" active=(active == 'pages') %}
@@ -39,6 +42,9 @@ function onStart()
         {% endif %}
         {% if userInstalled %}
             {% partial 'nav/section' icon="user" text="User" active=(active == 'user') %}
+        {% endif %}
+        {% if snowmanInstalled %}
+            {% partial 'nav/section' icon="snowman" text="Snowman" url="snowman/index"|page  active=(active == 'snowman') %}
         {% endif %}
     </div>
 </nav>

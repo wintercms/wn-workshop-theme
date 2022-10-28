@@ -1,6 +1,7 @@
 title = "Home"
 url = "/"
 layout = "default"
+is_hidden = 0
 ==
 <?php
 use System\Classes\PluginManager;
@@ -12,6 +13,7 @@ function onStart()
     // Find installed plugins
     $this['blogInstalled'] = $manager->hasPlugin('Winter.Blog');
 }
+?>
 ==
 {% partial 'nav/section-nav' %}
 

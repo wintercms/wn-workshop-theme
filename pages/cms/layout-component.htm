@@ -1,0 +1,23 @@
+title = "Layout component"
+url = "/cms/layout-component"
+layout = "cms-component"
+==
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% partial 'cms/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                <h2>Layout Component</h2>
+
+                <p>This tests a page that uses a component contained in the layout.</p>
+
+                <hr class="mb-8">
+
+                {% component 'demoTodo' %}
+            </div>
+        </div>
+    </div>
+</section>
