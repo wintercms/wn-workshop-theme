@@ -2,6 +2,26 @@ title = "Utilities | Snowboard"
 url = "/snowboard/extras"
 layout = "snowboard"
 ==
+<?php
+
+function onValidate()
+{
+    $validator = Validator::make(post(), [
+        'first_name' => 'required|regex:/^[a-z \-]+$/i',
+        'surname' => 'regex:/^[a-z \-]+$/i',
+        'email' => 'required|email',
+        'website' => 'url',
+    ], [
+        'first_name.regex' => 'First name may only contain letters, spaces and hyphens.',
+        'surname.regex' => 'Surname may only contain letters, spaces and hyphens',
+        'website.url' => 'Please enter a valid website URL',
+    ]);
+
+    if ($validator->fails()) {
+        throw new ValidationException($validator);
+    }
+}
+==
 <section id="body" class="py-20 flex-grow">
     <div class="container max-w-screen-xl">
         <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
@@ -86,6 +106,136 @@ layout = "snowboard"
                 });
                 </script>
                 <!-- END Flash -->
+
+                <h3 class="mt-10">Validation</h3>
+
+                <!-- BEGIN Single Validation Error -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Single Validation Error</h4>
+                <p>Shows only the first validation error (<a href="https://wintercms.com/docs/snowboard/extras#error-messages" target="docs" class="text-amber-600">Docs</a>)</p>
+
+                <form data-request="onValidate" data-request-validate id="single-validation-error">
+                    <div class="bg-red-100 border border-red-600 my-4 p-4" data-validate-error>
+                        Default error message
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="font-bold block mb-2" for="first_name">First Name</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Required, must contain only letters, spaces and dashes</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="first_name" placeholder="Enter name">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="surname">Surname</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Not required, must contain only letters, spaces and dashes</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="surname" placeholder="Enter name">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="email">Email</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Required, must be an email</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="email" name="email" placeholder="Enter email">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="website">Website</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Not required, must be a URL</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="website" placeholder="Enter website URL">
+                        </div>
+                        <div class="col-span-2">
+                            {% partial 'ui/button' color="amber" text="Submit" submit=true %}
+                        </div>
+                    </div>
+                </form>
+                <!-- END Single Validation Error -->
+
+                <!-- BEGIN Multiple Validation Errors -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Multiple Validation Errors</h4>
+                <p>Shows all validation errors within a dedicated error message container (<a href="https://wintercms.com/docs/snowboard/extras#error-messages" target="docs" class="text-amber-600">Docs</a>)</p>
+
+                <form data-request="onValidate" data-request-validate id="single-validation-error">
+                    <div class="bg-red-100 border border-red-600 my-4 p-4" data-validate-error>
+                        <strong>The following errors were reported:</strong>
+
+                        <ul class="list-disc my-2 ml-8">
+                            <li data-message></li>
+                        </ul>
+
+                        <p>Please review all fields and resubmit.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="font-bold block mb-2" for="first_name">First Name</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Required, must contain only letters, spaces and dashes</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="first_name" placeholder="Enter name">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="surname">Surname</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Not required, must contain only letters, spaces and dashes</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="surname" placeholder="Enter name">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="email">Email</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Required, must be an email</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="email" name="email" placeholder="Enter email">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="website">Website</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Not required, must be a URL</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="website" placeholder="Enter website URL">
+                        </div>
+                        <div class="col-span-2">
+                            {% partial 'ui/button' color="amber" text="Submit" submit=true %}
+                        </div>
+                    </div>
+                </form>
+                <!-- END Multiple Validation Errors -->
+
+                <!-- BEGIN Field-Level Validation Errors -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Field-Level Validation Errors</h4>
+                <p>Shows error messages that target specific fields (<a href="https://wintercms.com/docs/snowboard/extras#field-errors" target="docs" class="text-amber-600">Docs</a>)</p>
+
+                <form data-request="onValidate" data-request-validate id="single-validation-error">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="font-bold block mb-2" for="first_name">First Name</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Required, must contain only letters, spaces and dashes</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="first_name" placeholder="Enter name">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="surname">Surname</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Not required, must contain only letters, spaces and dashes</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="surname" placeholder="Enter name">
+                        </div>
+
+                        <div class="bg-red-100 border border-red-600 my-4 p-4 col-span-2" data-validate-for="first_name, surname"></div>
+
+                        <div>
+                            <label class="font-bold block mb-2" for="email">Email</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Required, must be an email</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="email" name="email" placeholder="Enter email">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-2" for="website">Website</label>
+                            <span class="block text-gray-400 -mt-2 mb-2 text-xs">Not required, must be a URL</span>
+                            <input class="block w-full border border-amber-600 p-4 rounded" type="text" name="website" placeholder="Enter website URL">
+                        </div>
+
+                        <div class="bg-red-100 border border-red-600 my-4 p-4 col-start-1 col-end-1" data-validate-for="email">
+                            Oops, invalid email address provided.
+                        </div>
+                        <div class="bg-red-100 border border-red-600 my-4 p-4 col-start-2 col-end-2" data-validate-for="website"></div>
+
+                        <div class="col-span-2">
+                            {% partial 'ui/button' color="amber" text="Submit" submit=true %}
+                        </div>
+                    </div>
+                </form>
+                <!-- END Multiple Validation Errors -->
             </div>
         </div>
     </div>

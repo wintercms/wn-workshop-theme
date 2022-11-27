@@ -1,6 +1,6 @@
 description = Button
 ==
-<a
+<{% if submit %}button{% else %}a{% endif %}
     href="{{ url|default("#") }}"
     class="
         inline-flex button font-bold text-sm rounded-lg transition transform active:scale-90
@@ -20,6 +20,7 @@ description = Button
     {% if dataRequest %} data-request="{{ dataRequest }}"{% endif %}
     {% if dataRequestData %} data-request-data="{{ dataRequestData }}"{% endif %}
     {% if dataFlash %} data-request-flash{% endif %}
+    {% if submit %} type="submit"{% endif %}
 >
     <span>{{ text }}</span>
-</a>
+</{% if submit %}button{% else %}a{% endif %}>
