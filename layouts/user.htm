@@ -24,6 +24,8 @@ description = "User layout"
         <div class="w-full lg:w-60">
             <div class="border border-gray-200 bg-gray-50 p-8 text-sm">
                 {% if user %}
+                    <img src="{{ user.getAvatarThumb(80) }}" alt="{{ user.name }}" class="rounded-full mx-auto w-20 h-20 mb-4">
+
                     Signed is as <strong>{{ user.name }}</strong>. <span class="text-green-400">({{ user.email }})</span>
 
                     <span class="block mt-4">

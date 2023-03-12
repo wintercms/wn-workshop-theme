@@ -26,4 +26,20 @@
     .btn {
         @apply mt-8 inline-flex font-bold text-sm rounded-lg transition transform active:scale-90 py-4 px-8 bg-green-600 text-white hover:bg-green-500;
     }
+
+    .deactivate {
+        @apply block mt-4 text-red-600 hover:text-red-800;
+    }
+
+    #accountDeactivateForm {
+        @apply mt-8 border border-red-200 bg-red-50 p-8;
+
+        .btn {
+            @apply bg-red-600 text-white hover:bg-red-500;
+        }
+
+        .btn + a {
+            @apply ml-4;
+        }
+    }
 }
