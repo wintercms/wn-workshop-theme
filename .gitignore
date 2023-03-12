@@ -1,5 +1,6 @@
-# NPM includes
+# NPM and Webpack
 node_modules
+mix.webpack.js
 
 # OS files
 .DS_Store
