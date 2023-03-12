@@ -1,0 +1,29 @@
+#account-component {
+    .row {
+        @apply block lg:grid lg:grid-cols-2 gap-10;
+
+        .col-md-6 {
+            @apply h-auto lg:h-full p-8 border border-gray-200 bg-gray-50;
+        }
+    }
+
+    .form-group {
+        @apply flex flex-col gap-2;
+
+        .form-label, label {
+            @apply font-bold text-sm text-gray-600;
+        }
+
+        .form-control {
+            @apply border border-gray-300 rounded-md p-2 focus:outline focus:outline-blue-500 placeholder:text-gray-300;
+        }
+    }
+
+    .form-group + .form-group {
+        @apply mt-4;
+    }
+
+    .btn {
+        @apply mt-8 inline-flex font-bold text-sm rounded-lg transition transform active:scale-90 py-4 px-8 bg-green-600 text-white hover:bg-green-500;
+    }
+}

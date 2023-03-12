@@ -1,0 +1,48 @@
+description = "User layout"
+
+[session]
+==
+{% partial 'html/head' %}
+
+{% partial 'nav/section-nav' color="green" active="user" %}
+
+<section id="hero" class="bg-gradient-to-b from-green-500 to-green-600 hero-small">
+    <h1 class="text-white mb-0">
+        {% if this.page.heading %}
+            {{ this.page.heading }}
+        {% else %}
+            User
+        {% endif %}
+    </h1>
+    <h2 class="text-green-300 font-body font-light mb-0">
+        Testing the Winter.User plugin.
+    </h2>
+</section>
+
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl flex flex-col lg:flex-row gap-10">
+        <div class="w-full lg:w-60">
+            <div class="border border-gray-200 bg-gray-50 p-8 text-sm">
+                {% if user %}
+                    Signed is as <strong>{{ user.name }}</strong>. <span class="text-green-400">({{ user.email }})</span>
+
+                    <span class="block mt-4">
+                        <a href="javascript:;" data-request="onLogout" class="text-green-600">Sign out</a>
+                    </span>
+                {% else %}
+                    Not signed in.
+                {% endif %}
+            </div>
+
+            <h3 class="text-green-600 mt-10">Pages</h3>
+
+            <div class="flex flex-col mt-8">
+            </div>
+        </div>
+        <div class="w-full">
+            {% page %}
+        </div>
+    </div>
+</section>
+
+{% partial 'html/foot' %}

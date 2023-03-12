@@ -26,6 +26,7 @@ function onStart()
     {% if color == "amber" %} bg-amber-700 {% endif %}
     {% if color == "purple" %} bg-purple-600 {% endif %}
     {% if color == "emerald" %} bg-emerald-700 {% endif %}
+    {% if color == "green" %} bg-green-600 {% endif %}
 ">
     <div class="p-4 divide-x divide-white divide-opacity-40 overflow-x-auto whitespace-nowrap">
         {% partial 'nav/section' icon="home" text="Home" url="home"|page active=(active == 'home') %}
@@ -41,7 +42,7 @@ function onStart()
             {% partial 'nav/section' icon="forum" text="Forum" active=(active == 'forum') %}
         {% endif %}
         {% if userInstalled %}
-            {% partial 'nav/section' icon="user" text="User" active=(active == 'user') %}
+            {% partial 'nav/section' icon="user" text="User" url="user/index"|page active=(active == 'user') %}
         {% endif %}
         {% if snowmanInstalled %}
             {% partial 'nav/section' icon="snowman" text="Snowman" url="snowman/index"|page  active=(active == 'snowman') %}
