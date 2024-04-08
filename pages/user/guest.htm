@@ -1,0 +1,71 @@
+title = "Sign in as Guest"
+url = "/user/guest"
+layout = "user"
+is_hidden = 0
+
+[account]
+redirect = 0
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+==
+<?php
+
+function onGuestRegister() {
+    $accountComponent = $this->page->components['account'];
+
+    if (!$accountComponent->canRegister()) {
+        throw new \Winter\Storm\Exception\ApplicationException(Lang::get('winter.user::lang.account.registration_disabled'));
+    }
+
+    $data = post();
+
+    $rules = [
+        'email' => 'required|between:6,255|email|unique:users',
+    ];
+
+    $validation = Validator::make($data, $rules);
+    if ($validation->fails()) {
+        throw new ValidationException($validation);
+    }
+
+    /*
+    * Record IP address
+    */
+    if ($ipAddress = \Request::ip()) {
+        $data['created_ip_address'] = $data['last_ip_address'] = $ipAddress;
+    }
+
+    $user = \Winter\User\Classes\AuthManager::instance()->registerGuest($data);
+
+    Flash::success(
+        sprintf('Guest account for "%s" has been created. (User ID: #%d)', $user->email, $user->id)
+    );
+}
+==
+<div id="account-component">
+    <div class="row">
+        <div class="col-md-6 col-span-2">
+            <h3>Sign in as a guest</h3>
+
+            <p>You may sign in as a guest account by entering your email below. A guest account cannot log in, but
+            can be registered and converted to a full user account.</p>
+
+            {{ form_ajax('onGuestRegister', { flash: 1 }) }}
+
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        id="registerEmail"
+                        placeholder="Enter your email"/>
+                </div>
+
+                <button type="submit" class="btn btn-default">Register</button>
+
+            {{ form_close() }}
+        </div>
+    </div>
+</div>

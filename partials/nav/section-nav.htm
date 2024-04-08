@@ -47,5 +47,6 @@ function onStart()
         {% if snowmanInstalled %}
             {% partial 'nav/section' icon="snowman" text="Snowman" url="snowman/index"|page  active=(active == 'snowman') %}
         {% endif %}
+        {% partial 'nav/section' icon="home" text="Backend" url="/backend" active=false %}
     </div>
 </nav>
