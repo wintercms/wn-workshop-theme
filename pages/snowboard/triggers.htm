@@ -1,0 +1,44 @@
+title = "Triggers | Snowboard"
+url = "/snowboard/triggers"
+layout = "snowboard"
+==
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% partial 'snowboard/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                <h2>Triggers</h2>
+
+                <h3>Value</h3>
+
+                <!-- BEGIN Trigger on value -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Trigger on value</h4>
+                <p>A message will appear when the field contains "trigger".</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-single-value">
+                    <div>
+                        <input
+                            class="block w-full border border-amber-600 p-4 rounded"
+                            type="text"
+                            name="field"
+                            placeholder="Field"
+                            data-trigger-show=".message"
+                            data-trigger-show-parent="#trigger-single-value"
+                            data-trigger-show-when="value['trigger,test','two'][blah,blahs2]"
+                            data-trigger-show-action="show"
+                        >
+                        <div class="message text-green-700">
+                            Triggered!
+                        </div>
+                    </div>
+                </div>
+                <!-- END Trigger on value -->
+            </div>
+        </div>
+    </div>
+</section>
