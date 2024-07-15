@@ -54,6 +54,7 @@ layout = "snowboard"
                             type="text"
                             name="field"
                             placeholder="Field"
+                            value="pizza"
                         >
                     </div>
                     <div
@@ -152,6 +153,52 @@ layout = "snowboard"
                 </div>
                 <!-- END Trigger on all of multiple values (text boxes) -->
 
+                <!-- BEGIN Trigger on select value -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on select value</h4>
+                <p>Triggers when you correctly identify the actor who played John Wick. Also tests multiple triggers.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-select-value">
+                    <div>
+                        <select
+                            class="block w-full border border-amber-600 p-4 rounded"
+                        >
+                            <option value="" selected>Select an actor</option>
+                            <option value="arnold">Arnold Schwarzenegger</option>
+                            <option value="lady">Lady Gaga</option>
+                            <option value="keanu">Keanu Reeves</option>
+                        </select>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-red-800"
+                        data-trigger-hide="select"
+                        data-trigger-hide-closest-parent="#trigger-on-select-value"
+                        data-trigger-hide-when="empty"
+                        data-trigger-hide-action="hide"
+                        data-trigger-show="select"
+                        data-trigger-show-closest-parent="#trigger-on-select-value"
+                        data-trigger-show-when="value[arnold, lady]"
+                        data-trigger-show-action="show"
+                    >
+                        Wrong
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-hide="select"
+                        data-trigger-hide-closest-parent="#trigger-on-select-value"
+                        data-trigger-hide-when="empty"
+                        data-trigger-hide-action="hide"
+                        data-trigger-show="select"
+                        data-trigger-show-closest-parent="#trigger-on-select-value"
+                        data-trigger-show-when="value[keanu]"
+                        data-trigger-show-action="show"
+                    >
+                        Correct
+                    </div>
+                </div>
+                <!-- END Trigger on all of multiple values (text boxes) -->
+
                 <hr class="my-8">
 
                 <h3>Empty</h3>
@@ -180,6 +227,49 @@ layout = "snowboard"
                         data-trigger-show-action="show"
                     >
                         Oi, you!
+                    </div>
+                </div>
+                <!-- END Trigger when empty -->
+
+                <!-- BEGIN Trigger when empty -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger when empty (checkboxes)</h4>
+                <p>A message will appear when none of the checkboxes are ticked.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-when-empty-checkboxes">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                            checked
+                        >
+                        <label for="check1">One</label>
+
+                        <input
+                            type="checkbox"
+                            name="check2"
+                            value="2"
+                            checked
+                        >
+                        <label for="check2">Two</label>
+
+                        <input
+                            type="checkbox"
+                            name="check3"
+                            value="3"
+                        >
+                        <label for="check3">Three</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-when-empty-checkboxes"
+                        data-trigger-show-when="empty"
+                        data-trigger-show-action="show"
+                    >
+                        This is a no-check zone
                     </div>
                 </div>
                 <!-- END Trigger on single value -->
