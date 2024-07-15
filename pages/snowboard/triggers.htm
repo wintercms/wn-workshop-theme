@@ -12,7 +12,7 @@ layout = "snowboard"
             <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
                 <h2>Triggers</h2>
 
-                <h3>Value / OneOf / AllOf</h3>
+                <h3 class="text-amber-600">Value / OneOf / AllOf</h3>
 
                 <!-- BEGIN Trigger on single value -->
                 <hr class="mb-8">
@@ -197,11 +197,53 @@ layout = "snowboard"
                         Correct
                     </div>
                 </div>
-                <!-- END Trigger on all of multiple values (text boxes) -->
+                <!-- END Trigger on select value -->
+
+                <!-- BEGIN Trigger on radio -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on radio options</h4>
+                <p>Triggers when you select the correct answer.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-radio">
+                    <div>
+                        <p><strong class="font-bold">Cow goes...</strong></p>
+                        <input
+                            type="radio"
+                            name="cow"
+                            value="baa"
+                        >
+                        <label for="check1">Baa</label>
+
+                        <input
+                            type="radio"
+                            name="cow"
+                            value="moo"
+                        >
+                        <label for="check2">Moo</label>
+
+                        <input
+                            type="radio"
+                            name="cow"
+                            value="woof"
+                        >
+                        <label for="check3">Woof</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=radio]"
+                        data-trigger-show-closest-parent="#trigger-on-radio"
+                        data-trigger-show-when="value:moo"
+                        data-trigger-show-action="show"
+                    >
+                        Moo!
+                    </div>
+                </div>
+                <!-- END Trigger on radio -->
 
                 <hr class="my-8">
 
-                <h3>Empty</h3>
+                <h3 class="text-amber-600">Empty</h3>
 
                 <!-- BEGIN Trigger when empty -->
                 <hr class="mb-8">
@@ -231,7 +273,7 @@ layout = "snowboard"
                 </div>
                 <!-- END Trigger when empty -->
 
-                <!-- BEGIN Trigger when empty -->
+                <!-- BEGIN Trigger when empty (checkboxes) -->
                 <hr class="my-8">
 
                 <h4 class="mb-0">Trigger when empty (checkboxes)</h4>
@@ -272,7 +314,94 @@ layout = "snowboard"
                         This is a no-check zone
                     </div>
                 </div>
-                <!-- END Trigger on single value -->
+                <!-- END Trigger when empty (checkboxes) -->
+
+                <!-- BEGIN Trigger on empty select value -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on empty select value</h4>
+                <p>Triggers when a dropdown is using an empty value.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-empty-select">
+                    <div>
+                        <select
+                            class="block w-full border border-amber-600 p-4 rounded"
+                        >
+                            <option value="" selected>Select an option</option>
+                            <option value="option1">I am an option</option>
+                            <option value="option2">I am also an option</option>
+                        </select>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-red-800"
+                        data-trigger-show="select"
+                        data-trigger-show-closest-parent="#trigger-on-empty-select"
+                        data-trigger-show-when="empty"
+                        data-trigger-show-action="show"
+                    >
+                        Select an option
+                    </div>
+                </div>
+                <!-- END Trigger on empty select value -->
+
+                <hr class="my-8">
+
+                <h3 class="text-amber-600">Checked / Unchecked</h3>
+
+                <!-- BEGIN Trigger on checked -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Trigger on checked</h4>
+                <p>Triggers when the checkbox is checked.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-checked">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="winter"
+                            value="1"
+                        >
+                        <label for="check1">Is this Winter?</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-blue-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-checked"
+                        data-trigger-show-when="checked"
+                        data-trigger-show-action="show"
+                    >
+                        Brrrrrr!
+                    </div>
+                </div>
+                <!-- END Trigger on checked -->
+
+                <!-- BEGIN Trigger on unchecked -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on unchecked</h4>
+                <p>Triggers when the checkbox is unchecked.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-unchecked">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="winter"
+                            value="1"
+                            checked
+                        >
+                        <label for="check1">Still waiting?</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-unchecked"
+                        data-trigger-show-when="unchecked"
+                        data-trigger-show-action="show"
+                    >
+                        Let's go!
+                    </div>
+                </div>
+                <!-- END Trigger on unchecked -->
             </div>
         </div>
     </div>
