@@ -2,6 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import './sections/user.css';
+@import './sections/snowcart.css';
 
 /* Default font */
 body {

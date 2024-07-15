@@ -13,6 +13,7 @@ function onStart()
     $this['forumInstalled'] = $manager->hasPlugin('Winter.Forum');
     $this['userInstalled'] = $manager->hasPlugin('Winter.User');
     $this['snowmanInstalled'] = $manager->hasPlugin('Winter.Snowman');
+    $this['snowcartInstalled'] = $manager->hasPlugin('Winter.Snowcart');
 
     // Active section
     if (empty($this['active'])) {
@@ -27,6 +28,7 @@ function onStart()
     {% if color == "purple" %} bg-purple-600 {% endif %}
     {% if color == "emerald" %} bg-emerald-700 {% endif %}
     {% if color == "green" %} bg-green-600 {% endif %}
+    {% if color == "rose" %} bg-rose-700 {% endif %}
 ">
     <div class="p-4 divide-x divide-white divide-opacity-40 overflow-x-auto whitespace-nowrap">
         {% partial 'nav/section' icon="home" text="Home" url="home"|page active=(active == 'home') %}
@@ -46,6 +48,9 @@ function onStart()
         {% endif %}
         {% if snowmanInstalled %}
             {% partial 'nav/section' icon="snowman" text="Snowman" url="snowman/index"|page  active=(active == 'snowman') %}
+        {% endif %}
+        {% if snowcartInstalled %}
+            {% partial 'nav/section' icon="snowcart" text="Snowcart" url="snowcart/index"|page  active=(active == 'snowcart') %}
         {% endif %}
         {% partial 'nav/section' icon="home" text="Backend" url="/backend" active=false %}
     </div>

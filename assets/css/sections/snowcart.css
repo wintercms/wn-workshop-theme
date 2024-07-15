@@ -1,0 +1,27 @@
+.cart {
+    @apply border border-gray-200 bg-gray-100 p-4 mb-4 mr-4 flex flex-row gap-2 flex-wrap;
+
+    .cart-show {
+        @apply flex-grow text-rose-700 hover:text-rose-800;
+    }
+
+    .cart-item-count::after {
+        content: ' item(s)';
+    }
+}
+
+.cart-details {
+    @apply border border-gray-200 bg-gray-50 p-4 mb-8 mr-4;
+
+    .cart-no-items {
+        @apply text-sm;
+    }
+
+    .cart-actions {
+        @apply mt-2 border-t border-gray-200 pt-2;
+
+        a {
+            @apply text-rose-700 hover:text-rose-800;
+        }
+    }
+}

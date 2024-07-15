@@ -1,0 +1,38 @@
+description = "Snowcart category page layout"
+
+[categoryPage]
+useContent = 1
+default = 1
+
+[cart]
+==
+{% partial 'html/head' %}
+
+{% partial 'nav/section-nav' color="rose" active="snowcart" %}
+
+<section id="hero" class="bg-gradient-to-b from-rose-600 to-rose-700 hero-small">
+    <h1 class="text-white mb-0">
+        {{ category.heading|default(category.title) }}
+    </h1>
+    <h2 class="text-rose-300 font-body font-light mb-0">
+        {{ category.description|raw }}
+    </h2>
+</section>
+
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flew-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% component cart %}
+
+                {% partial 'snowcart/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                {% page %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% partial 'html/foot' %}

@@ -22,6 +22,7 @@ module.exports = {
             purple: colors.violet,
             green: colors.green,
             red: colors.red,
+            rose: colors.rose,
         },
         container: {
             center: true,
