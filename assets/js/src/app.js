@@ -15,7 +15,7 @@ import Trigger from '../../../../../modules/system/assets/js/snowboard/extras/Tr
 
 ((window) => {
     const snowboard = new Proxy(
-        new Snowboard(),
+        new Snowboard(true, true),
         ProxyHandler,
     );
 
