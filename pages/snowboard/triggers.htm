@@ -379,7 +379,8 @@ layout = "snowboard"
                 <hr class="my-8">
 
                 <h4 class="mb-0">Trigger on unchecked</h4>
-                <p>Triggers when the checkbox is unchecked.</p>
+                <p>Triggers when the checkbox is unchecked. Also tests multiple actions - this one changes the button disabled state, changes
+                the wording and changes the class.</p>
 
                 <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-unchecked">
                     <div>
@@ -391,17 +392,65 @@ layout = "snowboard"
                         >
                         <label for="check1">Still waiting?</label>
                     </div>
-                    <div
-                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                    <button
+                        class="bg-red-700 text-white p-2 rounded-md disabled:opacity-50 inline-block"
                         data-trigger-show="input[type=checkbox]"
                         data-trigger-show-closest-parent="#trigger-on-unchecked"
                         data-trigger-show-when="unchecked"
-                        data-trigger-show-action="show"
+                        data-trigger-show-action="enable|value:'Let\'s go!','OK, I\'m waiting'|class:bg-green-600,bg-red-700"
                     >
-                        Let's go!
-                    </div>
+                    </button>
                 </div>
                 <!-- END Trigger on unchecked -->
+
+                <!-- BEGIN Trigger on at least 3 checked -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on multiple checked</h4>
+                <p>The "checked" and "unchecked" conditions now accept a parameter defining a "lower limit" of checked checkboxes,
+                allowing you to trigger an action when a person ticks/unticks more than 1 of a group of checkboxes.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-multiple-checked">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                        >
+                        <label for="check1">Impeccable suit</label>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                        >
+                        <label for="check1">Stylish haircut</label>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                        >
+                        <label for="check1">Expensive sunglasses</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-600"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-multiple-checked"
+                        data-trigger-show-when="checked:2,2"
+                        data-trigger-show-action="show"
+                    >
+                        Nice!
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-multiple-checked"
+                        data-trigger-show-when="checked:all"
+                        data-trigger-show-action="show"
+                    >
+                        BOSS!
+                    </div>
+                </div>
+                <!-- END Trigger on at least 3 checked -->
             </div>
         </div>
     </div>
