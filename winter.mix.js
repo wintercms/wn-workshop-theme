@@ -10,4 +10,4 @@ mix.postCss('assets/css/base.css', 'assets/css/theme.css', [
     require('autoprefixer')
 ]);
 
-mix.js('assets/js/src/app.js', 'assets/js/app.js');
+mix.js('assets/js/src/theme.js', 'assets/js/theme.js');

@@ -451,6 +451,79 @@ layout = "snowboard"
                     </div>
                 </div>
                 <!-- END Trigger on at least 3 checked -->
+
+                <hr class="my-8">
+
+                <h3 class="text-amber-600">Focus</h3>
+
+                <!-- BEGIN Trigger on focused -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Trigger on focus</h4>
+                <p>The textboxes below all trigger a focus condition on the message, and with additional triggers, update the text of the message.</p>
+
+                <div id="trigger-on-focus">
+                    <div class="grid grid-cols-2 gap-4 items-center">
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="text"
+                                name="firstName"
+                                placeholder="First name"
+                            >
+                        </div>
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="text"
+                                name="surname"
+                                placeholder="Surname"
+                            >
+                        </div>
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="text"
+                                name="phone"
+                                placeholder="Phone number"
+                            >
+                        </div>
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="email"
+                                name="email"
+                                placeholder="Email address"
+                            >
+                        </div>
+                    </div>
+
+                    <div
+                        class="block mt-2 p-2 rounded-md bg-amber-50 border border-amber-600"
+                        data-trigger-show="input"
+                        data-trigger-show-parent="#trigger-on-focus"
+                        data-trigger-show-when="focus"
+                        data-trigger-show-do="show"
+                        data-trigger-input-one="input[name=firstName]"
+                        data-trigger-input-one-parent="#trigger-on-focus"
+                        data-trigger-input-one-when="focus"
+                        data-trigger-input-one-do="value:Please enter your first name"
+                        data-trigger-input-two="input[name=surname]"
+                        data-trigger-input-two-parent="#trigger-on-focus"
+                        data-trigger-input-two-when="focus"
+                        data-trigger-input-two-do="value:Please enter your surname"
+                        data-trigger-input-three="input[name=phone]"
+                        data-trigger-input-three-parent="#trigger-on-focus"
+                        data-trigger-input-three-when="focus"
+                        data-trigger-input-three-do="value:Please enter a valid phone number"
+                        data-trigger-input-four="input[name=email]"
+                        data-trigger-input-four-parent="#trigger-on-focus"
+                        data-trigger-input-four-when="focus"
+                        data-trigger-input-four-do="value:Please enter a valid email address"
+                    >
+                    </div>
+                </div>
+                <!-- END Trigger on focused -->
             </div>
         </div>
     </div>
