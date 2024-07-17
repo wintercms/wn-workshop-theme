@@ -1,0 +1,530 @@
+title = "Triggers | Snowboard"
+url = "/snowboard/triggers"
+layout = "snowboard"
+==
+<section id="body" class="py-20 flex-grow">
+    <div class="container max-w-screen-xl">
+        <div class="block lg:flex lg:flex-row divide-x divide-gray-100">
+            <div class="flex-grow-0 px-8 lg:w-2/12 xl:pr-0">
+                {% partial 'snowboard/sections-list' %}
+            </div>
+
+            <div class="flex-grow-0 px-8 mt-16 lg:w-10/12 lg:mt-0">
+                <h2>Triggers</h2>
+
+                <h3 class="text-amber-600">Value / OneOf / AllOf</h3>
+
+                <!-- BEGIN Trigger on single value -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Trigger on single value</h4>
+                <p>A message will appear when the field contains "trigger".</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-single-value">
+                    <div>
+                        <input
+                            class="block w-full border border-amber-600 p-4 rounded"
+                            type="text"
+                            name="field"
+                            placeholder="Field"
+                        >
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=text]"
+                        data-trigger-show-closest-parent="#trigger-single-value"
+                        data-trigger-show-when="value[trigger]"
+                        data-trigger-show-action="show"
+                    >
+                        Triggered!
+                    </div>
+                </div>
+                <!-- END Trigger on single value -->
+
+                <!-- BEGIN Trigger on one of multiple values -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on one of multiple values</h4>
+                <p>A message will appear when the field contains one of the following values: "pizza", "burger", "hot dog".</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-one-of-multiple-values">
+                    <div>
+                        <input
+                            class="block w-full border border-amber-600 p-4 rounded"
+                            type="text"
+                            name="field"
+                            placeholder="Field"
+                            value="pizza"
+                        >
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=text]"
+                        data-trigger-show-closest-parent="#trigger-one-of-multiple-values"
+                        data-trigger-show-when="oneOf:pizza,burger,hot dog"
+                        data-trigger-show-action="show"
+                    >
+                        Yum yum!
+                    </div>
+                </div>
+                <!-- END Trigger on one of multiple values -->
+
+                <!-- BEGIN Trigger on all of multiple values -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on all of multiple values</h4>
+                <p>A message will when all checkboxes are ticked - each one being a number, and trigger expecting all numbers to be available. This
+                demonstrates triggers using multiple inputs to determine the success of a condition.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-all-of-multiple-values">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                        >
+                        <label for="check1">One</label>
+
+                        <input
+                            type="checkbox"
+                            name="check2"
+                            value="2"
+                        >
+                        <label for="check2">Two</label>
+
+                        <input
+                            type="checkbox"
+                            name="check3"
+                            value="3"
+                        >
+                        <label for="check3">Three</label>
+                    </div>
+
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-all-of-multiple-values"
+                        data-trigger-show-when="allOf:1, 2, 3"
+                        data-trigger-show-action="show"
+                    >
+                        Surprise!
+                    </div>
+                </div>
+                <!-- END Trigger on all of multiple values -->
+
+                <!-- BEGIN Trigger on all of multiple values (text boxes) -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on all of multiple values (text boxes)</h4>
+                <p>Same trigger test as above, but uses the combined values of a set of text boxes. This will trigger when the text boxes
+                contain "1", "2" and "3", in any order.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-all-of-multiple-values-text-boxes">
+                    <div>
+                        <input
+                            class="block w-full border border-amber-600 p-4 rounded"
+                            type="text"
+                            placeholder="Enter 1, 2 or 3"
+                        >
+                    </div>
+                    <div>
+                        <input
+                            class="block w-full border border-amber-600 p-4 rounded"
+                            type="text"
+                            placeholder="Enter 1, 2 or 3"
+                        >
+                    </div>
+                    <div>
+                        <input
+                            class="block w-full border border-amber-600 p-4 rounded"
+                            type="text"
+                            placeholder="Enter 1, 2 or 3"
+                        >
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=text]"
+                        data-trigger-show-closest-parent="#trigger-all-of-multiple-values-text-boxes"
+                        data-trigger-show-when="allOf:1, 2, 3"
+                        data-trigger-show-action="show"
+                    >
+                        Surprise!
+                    </div>
+                </div>
+                <!-- END Trigger on all of multiple values (text boxes) -->
+
+                <!-- BEGIN Trigger on select value -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on select value</h4>
+                <p>Triggers when you correctly identify the actor who played John Wick. Also tests multiple triggers.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-select-value">
+                    <div>
+                        <select
+                            class="block w-full border border-amber-600 p-4 rounded"
+                        >
+                            <option value="" selected>Select an actor</option>
+                            <option value="arnold">Arnold Schwarzenegger</option>
+                            <option value="lady">Lady Gaga</option>
+                            <option value="keanu">Keanu Reeves</option>
+                        </select>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-red-800"
+                        data-trigger-hide="select"
+                        data-trigger-hide-closest-parent="#trigger-on-select-value"
+                        data-trigger-hide-when="empty"
+                        data-trigger-hide-action="hide"
+                        data-trigger-show="select"
+                        data-trigger-show-closest-parent="#trigger-on-select-value"
+                        data-trigger-show-when="value[arnold, lady]"
+                        data-trigger-show-action="show"
+                    >
+                        Wrong
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-hide="select"
+                        data-trigger-hide-closest-parent="#trigger-on-select-value"
+                        data-trigger-hide-when="empty"
+                        data-trigger-hide-action="hide"
+                        data-trigger-show="select"
+                        data-trigger-show-closest-parent="#trigger-on-select-value"
+                        data-trigger-show-when="value[keanu]"
+                        data-trigger-show-action="show"
+                    >
+                        Correct
+                    </div>
+                </div>
+                <!-- END Trigger on select value -->
+
+                <!-- BEGIN Trigger on radio -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on radio options</h4>
+                <p>Triggers when you select the correct answer.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-radio">
+                    <div>
+                        <p><strong class="font-bold">Cow goes...</strong></p>
+                        <input
+                            type="radio"
+                            name="cow"
+                            value="baa"
+                        >
+                        <label for="check1">Baa</label>
+
+                        <input
+                            type="radio"
+                            name="cow"
+                            value="moo"
+                        >
+                        <label for="check2">Moo</label>
+
+                        <input
+                            type="radio"
+                            name="cow"
+                            value="woof"
+                        >
+                        <label for="check3">Woof</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=radio]"
+                        data-trigger-show-closest-parent="#trigger-on-radio"
+                        data-trigger-show-when="value:moo"
+                        data-trigger-show-action="show"
+                    >
+                        Moo!
+                    </div>
+                </div>
+                <!-- END Trigger on radio -->
+
+                <hr class="my-8">
+
+                <h3 class="text-amber-600">Empty</h3>
+
+                <!-- BEGIN Trigger when empty -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Trigger when empty</h4>
+                <p>A message will appear when the field below is empty.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-when-empty">
+                    <div>
+                        <input
+                            class="block w-full border border-amber-600 p-4 rounded"
+                            type="text"
+                            name="field"
+                            placeholder="Field"
+                            value="Not empty!"
+                        >
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-red-800"
+                        data-trigger-show="input[type=text]"
+                        data-trigger-show-closest-parent="#trigger-when-empty"
+                        data-trigger-show-when="empty"
+                        data-trigger-show-action="show"
+                    >
+                        Oi, you!
+                    </div>
+                </div>
+                <!-- END Trigger when empty -->
+
+                <!-- BEGIN Trigger when empty (checkboxes) -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger when empty (checkboxes)</h4>
+                <p>A message will appear when none of the checkboxes are ticked.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-when-empty-checkboxes">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                            checked
+                        >
+                        <label for="check1">One</label>
+
+                        <input
+                            type="checkbox"
+                            name="check2"
+                            value="2"
+                            checked
+                        >
+                        <label for="check2">Two</label>
+
+                        <input
+                            type="checkbox"
+                            name="check3"
+                            value="3"
+                        >
+                        <label for="check3">Three</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-when-empty-checkboxes"
+                        data-trigger-show-when="empty"
+                        data-trigger-show-action="show"
+                    >
+                        This is a no-check zone
+                    </div>
+                </div>
+                <!-- END Trigger when empty (checkboxes) -->
+
+                <!-- BEGIN Trigger on empty select value -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on empty select value</h4>
+                <p>Triggers when a dropdown is using an empty value.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-empty-select">
+                    <div>
+                        <select
+                            class="block w-full border border-amber-600 p-4 rounded"
+                        >
+                            <option value="" selected>Select an option</option>
+                            <option value="option1">I am an option</option>
+                            <option value="option2">I am also an option</option>
+                        </select>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-red-800"
+                        data-trigger-show="select"
+                        data-trigger-show-closest-parent="#trigger-on-empty-select"
+                        data-trigger-show-when="empty"
+                        data-trigger-show-action="show"
+                    >
+                        Select an option
+                    </div>
+                </div>
+                <!-- END Trigger on empty select value -->
+
+                <hr class="my-8">
+
+                <h3 class="text-amber-600">Checked / Unchecked</h3>
+
+                <!-- BEGIN Trigger on checked -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Trigger on checked</h4>
+                <p>Triggers when the checkbox is checked.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-checked">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="winter"
+                            value="1"
+                        >
+                        <label for="check1">Is this Winter?</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-blue-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-checked"
+                        data-trigger-show-when="checked"
+                        data-trigger-show-action="show"
+                    >
+                        Brrrrrr!
+                    </div>
+                </div>
+                <!-- END Trigger on checked -->
+
+                <!-- BEGIN Trigger on unchecked -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on unchecked</h4>
+                <p>Triggers when the checkbox is unchecked. Also tests multiple actions - this one changes the button disabled state, changes
+                the wording and changes the class.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-unchecked">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="winter"
+                            value="1"
+                            checked
+                        >
+                        <label for="check1">Still waiting?</label>
+                    </div>
+                    <button
+                        class="bg-red-700 text-white p-2 rounded-md disabled:opacity-50 inline-block"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-unchecked"
+                        data-trigger-show-when="unchecked"
+                        data-trigger-show-action="enable|value:'Let\'s go!','OK, I\'m waiting'|class:bg-green-600,bg-red-700"
+                    >
+                    </button>
+                </div>
+                <!-- END Trigger on unchecked -->
+
+                <!-- BEGIN Trigger on at least 3 checked -->
+                <hr class="my-8">
+
+                <h4 class="mb-0">Trigger on multiple checked</h4>
+                <p>The "checked" and "unchecked" conditions now accept a parameter defining a "lower limit" of checked checkboxes,
+                allowing you to trigger an action when a person ticks/unticks more than 1 of a group of checkboxes.</p>
+
+                <div class="grid grid-cols-2 gap-4 items-center" id="trigger-on-multiple-checked">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                        >
+                        <label for="check1">Impeccable suit</label>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                        >
+                        <label for="check1">Stylish haircut</label>
+                        <input
+                            type="checkbox"
+                            name="check1"
+                            value="1"
+                        >
+                        <label for="check1">Expensive sunglasses</label>
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-600"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-multiple-checked"
+                        data-trigger-show-when="checked:2,2"
+                        data-trigger-show-action="show"
+                    >
+                        Nice!
+                    </div>
+                    <div
+                        class="inline-block mt-2 p-2 rounded-md text-white bg-green-800"
+                        data-trigger-show="input[type=checkbox]"
+                        data-trigger-show-closest-parent="#trigger-on-multiple-checked"
+                        data-trigger-show-when="checked:all"
+                        data-trigger-show-action="show"
+                    >
+                        BOSS!
+                    </div>
+                </div>
+                <!-- END Trigger on at least 3 checked -->
+
+                <hr class="my-8">
+
+                <h3 class="text-amber-600">Focus</h3>
+
+                <!-- BEGIN Trigger on focused -->
+                <hr class="mb-8">
+
+                <h4 class="mb-0">Trigger on focus</h4>
+                <p>The textboxes below all trigger a focus condition on the message, and with additional triggers, update the text of the message.</p>
+
+                <div id="trigger-on-focus">
+                    <div class="grid grid-cols-2 gap-4 items-center">
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="text"
+                                name="firstName"
+                                placeholder="First name"
+                            >
+                        </div>
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="text"
+                                name="surname"
+                                placeholder="Surname"
+                            >
+                        </div>
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="text"
+                                name="phone"
+                                placeholder="Phone number"
+                            >
+                        </div>
+                        <div>
+                            <input
+                                class="block w-full border border-amber-600 p-4 rounded"
+                                type="email"
+                                name="email"
+                                placeholder="Email address"
+                            >
+                        </div>
+                    </div>
+
+                    <div
+                        class="block mt-2 p-2 rounded-md bg-amber-50 border border-amber-600"
+                        data-trigger-show="input"
+                        data-trigger-show-parent="#trigger-on-focus"
+                        data-trigger-show-when="focus"
+                        data-trigger-show-do="show"
+                        data-trigger-input-one="input[name=firstName]"
+                        data-trigger-input-one-parent="#trigger-on-focus"
+                        data-trigger-input-one-when="focus"
+                        data-trigger-input-one-do="value:Please enter your first name"
+                        data-trigger-input-two="input[name=surname]"
+                        data-trigger-input-two-parent="#trigger-on-focus"
+                        data-trigger-input-two-when="focus"
+                        data-trigger-input-two-do="value:Please enter your surname"
+                        data-trigger-input-three="input[name=phone]"
+                        data-trigger-input-three-parent="#trigger-on-focus"
+                        data-trigger-input-three-when="focus"
+                        data-trigger-input-three-do="value:Please enter a valid phone number"
+                        data-trigger-input-four="input[name=email]"
+                        data-trigger-input-four-parent="#trigger-on-focus"
+                        data-trigger-input-four-when="focus"
+                        data-trigger-input-four-do="value:Please enter a valid email address"
+                    >
+                    </div>
+                </div>
+                <!-- END Trigger on focused -->
+            </div>
+        </div>
+    </div>
+</section>

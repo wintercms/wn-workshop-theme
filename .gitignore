@@ -1,6 +1,7 @@
 # NPM and Webpack
 node_modules
 mix.webpack.js
+assets/js/app.js.LICENSE.txt
 
 # OS files
 .DS_Store

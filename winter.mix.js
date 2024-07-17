@@ -9,3 +9,5 @@ mix.postCss('assets/css/base.css', 'assets/css/theme.css', [
     require('tailwindcss'),
     require('autoprefixer')
 ]);
+
+mix.js('assets/js/src/theme.js', 'assets/js/theme.js');
